@@ -1,6 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Input;
 /*
@@ -16,51 +15,37 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('users/{id}', function ($id) {
         return response()->json($id);
     });
 
-    Route::get('external-books', function () {
-        $name = Input::get('name');
+    Route::get('external-books', [
+        'uses' => 'bookcontroller@getExternalBooks'
+    ]);
 
-        $client = new Client();
-        $res = $client->request('GET', 'https://www.anapioficeandfire.com/api/books', [
-            'query' => ['name' => $name]
-        ]);
-
-        if (($res->getBody()->__toString() == '[]') || $name == null) {
-            $result = [];
-            $result['status_code'] = 200;
-            $result['status'] = "success";
-            $result['data'] = [];
-
-            return response()->json($result);
-        } else {
-
-            $book = json_decode($res->getBody(), false);
-
-            $result = [];
-            $result['status_code'] = 200;
-            $result['status'] = "success";
-            $result['data'] = [
-                'name' => $book[0]->name,
-                'isbn' =>$book[0]->isbn,
-                'authors' => $book[0]->authors,
-                'number_of_pages' => $book[0]->numberOfPages,
-                'publisher' => $book[0]->publisher,
-                'country' => $book[0]->country,
-                'release_date' => date_format(date_create($book[0]->released),"Y-m-d")
-            ];
-            return response()->json($result);
-        }
-    });
-
+    //v1 API
     Route::group(['prefix' => 'v1'], function () {
         Route::post('books/', [
             'uses' => 'bookcontroller@postAddNewBook'
-            ]);
+        ]);
+
+        Route::get('books/', [
+            'uses' => 'bookcontroller@getBookLists'
+        ]);
+
+        Route::patch('books/{id}', [
+            'uses' => 'bookcontroller@patchUpdateBook'
+        ]);
+
+        Route::delete('books/{id}', [
+            'uses' => 'bookcontroller@deleteRemoveBook'
+        ]);
+
+        Route::get('books/{id}', [
+            'uses' => 'bookcontroller@getBook'
+        ]);
     });
 });
