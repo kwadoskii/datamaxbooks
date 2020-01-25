@@ -4,66 +4,26 @@
 
 This project was written in **Laravel** framework, using **MySql** as Database and **Xammp** as application server.
 
-**NB:** This ensure you have internet access as some online CDN were used during the course of developing and for the API endpoints that calls the external Ice And Fire API.
+**NB:** Ensure you have internet access as some online CDN were used during the course of development and for the API endpoints that calls the external Ice And Fire API.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Prequisities
+- phpMyAdmin
+- WAMP or XAMMP
+- An existing database in MySql
 
 ## Setup Steps
 
-- After cloning the repo
+- After downloading and extracting the zip file.
+- Copy the Project folder and Host in it in your application server docroot.
+- Download laravel vendor files [here](https://drive.google.com/open?id=14pABL1ZqUb4ccKTjlHZcie_BpjayyayI) , extract it and copy the vendor folder to the project folder. 
+- Open the Project folder and locate the **.env.example** file rename this file to **.env**
+- Open the .env file and locate the mysql connection details. Change the parameter according to your mysql Host, Port, Username and Password. Please use DB_DATABASE=Datamax. Set the parameter **APP_KEY** = **base64:ykAJSZOoPSMfKZNVK3D1IK6sm5VhavJsjRYGdoUy9/s=**  (NB: The = sign is part of the string) and save the file.
+- Still on the Project folder, locate **datamax.sql** and run it on phpMyAdmin to create the database and the neccesary tables with dummy dataset.
+- Now point the public folder of the project from your domain docroot EG: {domain}/datamaxbooks-master/public mine was http://127.0.0.1/datamaxbooks-master/public/
+- The above step should bring you to the view showing first ten books from the database we configured earlier. 
+- You can now go ahead to test the  front end and the API endpoints.
+- The endpoints can be accesed like http://127.0.0.1/datamaxbooks-master/public/api/v1/books
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Thank you.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
