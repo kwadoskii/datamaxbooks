@@ -2,31 +2,85 @@
     font-family: 'Raleway', sans-serif;
     margin-top: -25px;
     font-size: .95em;
-  }
-  .card .controls .btn-outline-danger {
+}
+
+.card .card-header {
+    font-family: 'Raleway', sans-serif;
+}
+
+.card .controls .btn-outline-danger {
     float: right;
-  }
-  .card .card-body h5 {
+}
+
+.card .card-body h5 {
     font-size: 1.65em;
     text-transform: capitalize;
     font-family: 'ZCOOL QingKe HuangYou', cursive;
-  }
-  .card .card-body p {
+}
+
+.card .card-body p {
     text-align: justify;
     margin-top: -4px;
     font-family: 'Raleway', sans-serif;
-  }
-  .card .card-footer {
+}
+
+.card .card-footer {
     font-size: 1em;
-  }
-  .card .card-footer .pubdate {
-    float: right;
     font-family: 'Raleway', sans-serif;
-  }
-  .card .b {
+}
+
+.card .card-footer .pubdate {
+    float: right;
+    /* font-size: 1em; */
+}
+
+.card .b {
     padding: 1em 1.25em 1em 1.25em;
     margin: 0;
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
-  }
+    font-weight: lighter;
+}
+
+.card, .modal-content {
+    border-radius: 0.95rem !important;
+}
+
+.modal-header, .modal-footer {
+    background-color: rgba(0, 0, 0, .03);
+}
+
+.p41 {
+    padding: 4rem 1rem !important;
+    background: rgba(1, 1, 1, .95);
+}
+
+.form-control {
+    border-radius: 0.55rem !important;
+    font-family: 'Lato', sans-serif !important;
+}
+
+label{
+    font-weight: lighter;
+    font-size: .8em;
+}
+
+/* Scrollbar restyle */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(1, 1, 1, .5);
+    border-radius: 4px;
+    opacity: 10%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(1, 1, 1, .95);
+}

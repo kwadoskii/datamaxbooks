@@ -33,7 +33,8 @@ Route::group(['prefix' => 'api'], function () {
         ]);
 
         Route::get('books/', [
-            'uses' => 'bookcontroller@getBookLists'
+            'uses' => 'bookcontroller@getBookLists',
+            'as' => 'booklists'
         ]);
 
         Route::patch('books/{id}', [

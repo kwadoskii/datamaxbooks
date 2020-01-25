@@ -80,7 +80,8 @@ class bookcontroller extends Controller
 
     public function getBookLists()
     {
-        $booklist = Book::all();
+        // $booklist = Book::all();
+        $booklist = Book::orderBy('id', 'asc')->get();
         $response = [];
 
         if ($booklist) {
@@ -126,7 +127,7 @@ class bookcontroller extends Controller
 
         $response['status_code'] = 200;
         $response['status'] = 'success';
-        $response['message'] = "The book " .$updateBook->name. " was updated successfully";
+        $response['message'] = "The book " . $updateBook->name . " was updated successfully";
 
         $response['data'] =  [
             'id' => $updateBook->id,
@@ -136,7 +137,7 @@ class bookcontroller extends Controller
             'number_of_pages' => $updateBook->number_of_pages,
             'publisher' => $updateBook->publisher,
             'country' => $updateBook->country,
-            'release_date' => date_format(date_create($updateBook->released), "Y-m-d")
+            'release_date' => date_format(date_create($updateBook->release_date), "Y-m-d")
         ];
 
         return response()->json($response);
@@ -148,14 +149,13 @@ class bookcontroller extends Controller
         $bookId = $request->id;
 
         $delBook = Book::find($bookId);
-        if($delBook != null)
-        {
+        if ($delBook != null) {
             $bookName = $delBook->name;
             $delBook->delete();
 
             $response['status_code'] = 204;
             $response['status'] = 'success';
-            $response['message'] = "The book " .$bookName. " was deleted successfully";
+            $response['message'] = "The book " . $bookName . " was deleted successfully";
             $response['data'] = [];
 
             return response()->json($response);
@@ -168,7 +168,7 @@ class bookcontroller extends Controller
         $bookId = $request->id;
         $book = Book::find($bookId);
 
-        if($book){
+        if ($book) {
             $response['status_code'] = 200;
             $response['status'] = 'success';
             $response['data'] =  [
@@ -179,7 +179,7 @@ class bookcontroller extends Controller
                 'number_of_pages' => $book->number_of_pages,
                 'publisher' => $book->publisher,
                 'country' => $book->country,
-                'release_date' => date_format(date_create($book->released), "Y-m-d")
+                'release_date' => date_format(date_create($book->release_date), "Y-m-d")
             ];
             return response()->json($response);
         }
