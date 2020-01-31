@@ -68,7 +68,8 @@ function getbooks() {
         url: booksUrl,
     }).done(function (response) {
         let books = response.data.book.slice(0, 10);
-        i = 1;
+        let i = 1;
+
         books = books.reduce((acc, { id, isbn, name, authors, release_date, publisher }) => acc +=
             `<div class="col-md-4 mb-4">
                 <div class="card">
@@ -84,11 +85,18 @@ function getbooks() {
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">${publisher}</small>
-                        <small class='pubdate text-muted'>&copy; ${release_date}</small>
+                        <small class='pubdate text-muted'>&copy;${test(release_date)}</small>
                     </div>
                 </div>
             </div>`, ``);
 
         $('#bookholder').html(books);
     });
+}
+
+function test(release_date){
+    let f_release_date  = new Date(release_date);
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    f_release_date = `${months[f_release_date.getMonth()]}, ${f_release_date.getFullYear()}.`;
+    return f_release_date;
 }
